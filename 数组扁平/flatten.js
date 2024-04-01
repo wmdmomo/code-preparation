@@ -25,7 +25,8 @@ const flatten3 = (arr, n) => {
   let res = [];
   for (let i = 0; i < arr.length; i++) {
     if (Array.isArray(arr[i]) && n) {
-      res = res.concat(flatten3(arr[i], n--));
+      // 这里一定是n-1 不能是n--
+      res = res.concat(flatten3(arr[i], n - 1));
     } else {
       res.push(arr[i]);
     }

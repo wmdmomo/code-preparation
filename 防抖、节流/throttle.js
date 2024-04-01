@@ -8,6 +8,7 @@ function throttle(func, wait, option = { leading: true, trailing: true }) {
         if (trailing && lastArg) {
           func.apply(this, lastArg);
           lastArg = null;
+          // 这里一定要重新再调用一遍startWaitingPeriods
           startWaitingPeriod();
         } else {
           isWaiting = false;
@@ -39,3 +40,14 @@ document.onclick = function (e) {
   num++;
   testDebounceFn(num, "debounce"); // 给防抖函数传参
 };
+function throttle2(fn, timing) {
+  let trigger;
+  return function () {
+    if (trigger) return;
+    trigger = true;
+    fn.apply(this);
+    setTimeout(() => {
+      trigger = false;
+    }, timing);
+  };
+}
