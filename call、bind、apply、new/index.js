@@ -30,7 +30,7 @@ Person.prototype.sayName = function () {
  * this指向不是原始的函数，而是这个new对象
  */
 
-Function.prototype.bind = function (context, ...arg1) {
+Function.prototype.myBind = function (context, ...arg1) {
   const fn = this;
   function returnFn(...arg2) {
     fn.apply(this instanceof returnFn ? this : context, [...arg1, ...arg2]);
@@ -49,8 +49,8 @@ function bar(name, age) {
   console.log(age);
 }
 
-// var bindFoo = bar.bind(foo, "daisy");
-// const test = bindFoo("18");
+var bindFoo = bar.myBind(foo, "daisy");
+const test = new bindFoo("18");
 
 function isInstanceof(instance, target) {
   let proto = Object.getPrototypeOf(instance);
@@ -64,19 +64,19 @@ function isInstanceof(instance, target) {
   return false;
 }
 
-Function.prototype.myCall = function (context) {
-  context = context || window;
+Function.prototype.myCall = function (context, ...args) {
+  context = Object(context || window);
   context.fn = this;
-  let arg = [...arguments].slice(1);
-  context.fn(...arg);
+  let res = context.fn(...args);
   delete context.fn;
+  return res;
 };
-Function.prototype.myApply = function (context, arr) {
-  context = context || window;
+Function.prototype.myApply = function (context, args = []) {
+  context = Object(context || window);
   context.fn = this;
-  if (!arr) context.fn();
-  else context.fn(...arr);
+  let res = context.fn(...args);
   delete context.fn;
+  return res;
 };
 var foo = {
   value: 1,
@@ -86,5 +86,5 @@ function bar(name, age) {
   console.log(age);
   console.log(this.value);
 }
-bar.myCall(foo, "kevin", 18);
-bar.myApply(foo, ["wmd", 89]);
+// bar.myCall(foo, "kevin", 18);
+bar.myApply(foo);
