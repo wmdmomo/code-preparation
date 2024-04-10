@@ -27,6 +27,7 @@ function throttle2(fn, wait, option = { leading: true, trailing: true }) {
       }, wait);
     };
     if (!isWaiting) {
+      isWaiting = true;
       if (leading) {
         fn.apply(this, args);
       } else {
