@@ -11,3 +11,18 @@ Promise.myRace = function (promises) {
     }
   });
 };
+
+Promise.reject(1)
+  .then((r) => {
+    console.log(r);
+    return 2;
+  })
+  .catch((r) => {
+    console.log("catch", r);
+    return r;
+    // return 3;
+  })
+  .then((r) => {
+    console.log("then", r);
+    return 4;
+  });

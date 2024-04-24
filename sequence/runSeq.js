@@ -41,5 +41,5 @@ function runSeq(list) {
   const result = list.reduce((prevCallTask, now) => {
     return prevCallTask.then(now);
   }, Promise.resolve());
-  result.then((r) => console.log(r));
+  result.then((r) => console.log("rrrr", r));
 }

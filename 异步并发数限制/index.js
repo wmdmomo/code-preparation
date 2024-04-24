@@ -20,7 +20,7 @@ const limitRequest = (tasks, limit) => {
           .finally(() => {
             limit++;
             finishCount++;
-            console.log("结束", start, new Date().toLocaleString());
+            console.log("结束", cur, new Date().toLocaleString());
             if (finishCount === taskLength) {
               resolve(result);
             } else {

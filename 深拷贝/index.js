@@ -36,7 +36,7 @@ const deepCopy = (obj, hash = new WeakMap()) => {
   }
 
   cloneObj = Array.isArray(obj) ? [] : {};
-  hash.set(obj.cloneObj);
+  hash.set(obj, cloneObj);
 
   for (let key of Reflect.ownKeys()) {
     cloneObj[key] = deepCopy(obj[key], hash);

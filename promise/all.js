@@ -3,7 +3,7 @@ Promise.myAll = function (promises) {
   var res = new Array(len),
     cnt = 0;
   return new Promise((resolve, reject) => {
-    for (let i = 0; i < promises.length; i++) {
+    for (let i = 0; i < len; i++) {
       // 这里其实是好几个请求同时发出去的
       Promise.resolve(promises[i])
         .then((r) => {

@@ -16,10 +16,10 @@ function curry(func) {
 function sum(a, b, c) {
   return a + b + c;
 }
-// const curriedSum = curry(sum);
-// console.log(curriedSum(1, 2, 3));
-// console.log(curriedSum(1)(2, 3));
-// console.log(curriedSum(1)(2)(3));
+const curriedSum = curry(sum);
+console.log(curriedSum(1, 2, 3));
+console.log(curriedSum(1)(2, 3));
+console.log(curriedSum(1)(2)(3));
 
 /**
  * @param { number } num
@@ -42,8 +42,8 @@ function curry1(func) {
 function add1(...args) {
   return args.reduce((acc, cur) => acc + cur);
 }
-let cAdd1 = curry1(add1);
-console.log(cAdd1(1)(2)(3)(4, 5)()); //15
+// let cAdd1 = curry1(add1);
+// console.log(cAdd1(1)(2)(3)(4, 5)()); //15
 
 // const sum1 = sum(1);
 // sum1(2) == 3; // true
