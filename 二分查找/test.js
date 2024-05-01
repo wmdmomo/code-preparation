@@ -1,3 +1,4 @@
+// 左闭右开的写法
 var searchInsert = function (nums, target) {
   let left = 0,
     right = nums.length;

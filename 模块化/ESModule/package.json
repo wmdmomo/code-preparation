@@ -1,0 +1,13 @@
+{
+  "name": "code",
+  "version": "1.0.0",
+  "main": "index.js",
+  "repository": "git@github.com:wmdmomo/code-preparation.git",
+  "author": "wangmengdan.wmd <wangmengdan.wmd@bytedance.com>",
+  "license": "MIT",
+  "type": "module",
+  "dependencies": {
+    "jotai": "^2.8.0",
+    "redux": "^5.0.1"
+  }
+}

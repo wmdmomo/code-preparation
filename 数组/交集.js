@@ -22,3 +22,13 @@ const getIntersection = (...args) => {
   console.log(res);
 };
 // getIntersection([1, 2, 3, 4, 5], [4, 5, 6]);
+// const set = new Set([1, 2, 2, 3, 4, 5]);
+// for (let item of set) {
+//   console.log(item);
+// }
+const map = new Map();
+map.set("name", "www");
+map.set("age", 13);
+for (let [key, value] of map) {
+  console.log(key, value);
+}

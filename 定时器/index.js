@@ -1,22 +1,19 @@
-const http = (index) => {
-  console.log("http", index);
-  return new Promise((resolve) => {
-    setTimeout(() => {
-      resolve({ index, data: "www" });
-    }, Math.random() * 3000);
-  });
+function Foo() {
+  Foo.a = function () {
+    console.log(1);
+  };
+  this.a = function () {
+    console.log(2);
+  };
+}
+Foo.a = function () {
+  console.log(4);
 };
-const fun = (index) => {
-  setTimeout(async () => {
-    const res = await http(index);
-    console.log("setTimeout", res);
-    fun(index + 1);
-  }, 1000);
+Foo.a();
+const obj = new Foo();
+Foo.prototype.a = function () {
+  console.log(3);
 };
-// fun(0);
 
-let index = 0;
-setInterval(async () => {
-  const res = await http(index++);
-  console.log("setInterval", res);
-}, 1000);
+obj.a();
+Foo.a();
