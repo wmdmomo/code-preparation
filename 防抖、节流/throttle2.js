@@ -1,11 +1,11 @@
 function throttle(fn, wait) {
-  let flag;
+  let isWaiting;
   return function (...args) {
-    if (flag) return;
+    if (isWaiting) return;
     fn.apply(this, args);
-    flag = true;
+    isWaiting = true;
     setTimeout(() => {
-      flag = false;
+      isWaiting = false;
     }, wait);
   };
 }

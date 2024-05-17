@@ -30,13 +30,11 @@ runSeq([
 ]); // 'foo'
 
 function runSeq(list) {
-  //   let p = Promise.resolve();
-
-  //   for (let i = 0; i < list.length; i++) {
-  //     p = p.then(list[i]).catch(() => new Promise(() => {}));
-  //   }
-
-  //   p.then((res) => console.log("reshhh", res));
+  let p = Promise.resolve();
+  for (let i = 0; i < list.length; i++) {
+    p = p.then(list[i]).catch(() => new Promise(() => {}));
+  }
+  p.then((res) => console.log("res", res));
 
   const result = list.reduce((prevCallTask, now) => {
     return prevCallTask.then(now);

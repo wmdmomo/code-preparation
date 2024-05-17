@@ -4,8 +4,6 @@ function ListNode(key, val) {
   this.prev = null;
   this.next = null;
 }
-
-// 双向链接 头尾节点 链表容量
 function DoubleLink() {
   this.head = null;
   this.tail = null;
@@ -13,7 +11,6 @@ function DoubleLink() {
 }
 
 DoubleLink.prototype.add = function (key, val) {
-  // 在末尾添加上一个节点
   const newNode = new ListNode(key, val);
   if (this.size === 0) {
     this.head = newNode;
@@ -43,21 +40,12 @@ DoubleLink.prototype.remove = function (node) {
   }
   this.size--;
 };
-
-/**
- * @param {number} capacity
- */
 var LRUCache = function (capacity) {
   this.doubleLink = new DoubleLink();
   this.capacity = capacity;
   // 这个map存在的key和node
   this.map = new Map();
 };
-
-/**
- * @param {number} key
- * @return {number}
- */
 LRUCache.prototype.get = function (key) {
   const node = this.map.get(key);
   if (node) {
@@ -68,12 +56,6 @@ LRUCache.prototype.get = function (key) {
     return -1;
   }
 };
-
-/**
- * @param {number} key
- * @param {number} value
- * @return {void}
- */
 LRUCache.prototype.put = function (key, value) {
   const node = this.map.get(key);
   if (node) {

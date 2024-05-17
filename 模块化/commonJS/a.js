@@ -1,6 +1,4 @@
-const b = require("./b.js");
-let name = 5;
-module.exports = {
-  name: name,
-};
-console.log("b", b);
+module.exports.a = 1;
+var b = require("./b.js");
+console.log(b);
+module.exports.a = 2;
